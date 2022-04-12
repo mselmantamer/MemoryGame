@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     clickable = true;
                     if (showJoker) btnShow.setClickable(true);
-                }, 1500);
+                }, 1600);
                 clickState = false;
             }
         }
