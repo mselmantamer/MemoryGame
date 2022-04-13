@@ -18,6 +18,7 @@ public class MenuActivity extends AppCompatActivity {
         btnStartGame = findViewById(R.id.btnStartGame);
         btnStartGame.setOnClickListener(view -> {
             startActivity(new Intent(this, MainActivity.class));
+            overridePendingTransition(0, 0);
         });
     }
 }

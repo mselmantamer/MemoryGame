@@ -2,7 +2,16 @@ package com.example.gameapplication3;
 
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
+
 import androidx.cardview.widget.CardView;
 
 import java.util.Arrays;
@@ -75,5 +84,31 @@ public class GameTools {
                 imageView.setImageResource(R.drawable.a8);
                 break;
         }
+    }
+
+    public void OpenWinDialog(Context context, String score) {
+        Activity activity = ((Activity) context);
+        Dialog winDialog = new Dialog(context);
+
+        winDialog.setContentView(R.layout.win_dialog_layout);
+        winDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        winDialog.show();
+
+        Button btnMenu = winDialog.findViewById(R.id.btnMenu);
+        btnMenu.setOnClickListener(view -> {
+            activity.startActivity(new Intent(context, MenuActivity.class));
+            activity.overridePendingTransition(0, 0);
+        });
+
+        Button btnReplay = winDialog.findViewById(R.id.btnReplay);
+        btnReplay.setOnClickListener(view -> {
+            winDialog.dismiss();
+            activity.finish();
+            activity.startActivity(activity.getIntent());
+            activity.overridePendingTransition(0, 0);
+        });
+
+        TextView textScore = winDialog.findViewById(R.id.textScore);
+        textScore.setText(score);
     }
 }

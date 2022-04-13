@@ -1,6 +1,9 @@
 package com.example.gameapplication3;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -64,12 +67,13 @@ public class MainActivity extends AppCompatActivity {
         btnReplay = findViewById(R.id.btnReplay);
         btnReplay.setOnClickListener(v -> {
             finish();
-            this.startActivity(getIntent());
-            this.overridePendingTransition(0, 0);
+            startActivity(getIntent());
+            overridePendingTransition(0, 0);
         });
         btnMenu = findViewById(R.id.btnMenu);
         btnMenu.setOnClickListener(v -> {
             startActivity(new Intent(this, MenuActivity.class));
+            overridePendingTransition(0, 0);
         });
     }
 
@@ -114,8 +118,10 @@ public class MainActivity extends AppCompatActivity {
                         puanTextView.startAnimation(AnimationUtils.loadAnimation(this, R.anim.text_anim));
 
                         cardOfInvisible += 2;
-                        if (cardOfInvisible == 16)
-                            Toast.makeText(this, "Finished", Toast.LENGTH_SHORT).show();
+                        if (cardOfInvisible == 16) {
+                            gameTools.OpenWinDialog(this, String.valueOf(totalScore));
+                            chronometer.stop();
+                        }
                     } else {
                         viewS.setClickable(true);
                         viewS2.setClickable(true);
