@@ -8,7 +8,7 @@ import android.widget.Button;
 
 public class MenuActivity extends AppCompatActivity {
 
-    Button btnStartGame;
+    Button btnStartGame, btnScores;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +18,12 @@ public class MenuActivity extends AppCompatActivity {
         btnStartGame = findViewById(R.id.btnStartGame);
         btnStartGame.setOnClickListener(view -> {
             startActivity(new Intent(this, MainActivity.class));
+            overridePendingTransition(0, 0);
+        });
+
+        btnScores = findViewById(R.id.btnScores);
+        btnScores.setOnClickListener(view -> {
+            startActivity(new Intent(this, ScoreActivity.class));
             overridePendingTransition(0, 0);
         });
     }

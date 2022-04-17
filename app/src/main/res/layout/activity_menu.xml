@@ -47,11 +47,20 @@
 
             <Button
                 android:id="@+id/btnStartGame"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:backgroundTint="@color/specialyellow"
                 android:text="Oyuna Başla"
+                app:cornerRadius="10dp" />
+
+            <Button
+                android:id="@+id/btnScores"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:backgroundTint="@color/specialyellow"
+                android:text="Yüksek Skorlar"
                 app:cornerRadius="10dp" />
         </LinearLayout>
     </LinearLayout>

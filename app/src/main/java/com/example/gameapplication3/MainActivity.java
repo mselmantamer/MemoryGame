@@ -1,20 +1,15 @@
 package com.example.gameapplication3;
 
-import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -26,7 +21,9 @@ public class MainActivity extends AppCompatActivity {
     Chronometer chronometer;
     TextView puanTextView;
 
-    GameTools gameTools = new GameTools();
+    Database database = new Database(this);
+
+    GameTools gameTools = new GameTools(this);
     List<Integer> nums = gameTools.RandomNumbers();
 
     ImageView btnReplay, btnMenu, btnShow;
@@ -119,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
 
                         cardOfInvisible += 2;
                         if (cardOfInvisible == 16) {
-                            gameTools.OpenWinDialog(this, String.valueOf(totalScore));
+                            gameTools.CompareScore(totalScore);
                             chronometer.stop();
                         }
                     } else {

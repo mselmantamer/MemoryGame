@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,6 +20,12 @@ import java.util.Collections;
 import java.util.List;
 
 public class GameTools {
+
+    Context context;
+
+    public GameTools(Context context) {
+        this.context = context;
+    }
 
     public void AnimateCard(CardView cardFront, CardView cardBack, boolean state) {
         AnimatorSet front_animation2 = (AnimatorSet) AnimatorInflater.
@@ -37,9 +44,9 @@ public class GameTools {
         back_animation2.start();
     }
 
-    public int CheckForScore(List<Integer> pastOfClilck, int id1, int id2) {
+    public int CheckForScore(List<Integer> pastOfClick, int id1, int id2) {
         int sayac = 0;
-        for (int past : pastOfClilck) {
+        for (int past : pastOfClick) {
             if (past == id1 || past == id2) {
                 sayac++;
             }
@@ -94,6 +101,9 @@ public class GameTools {
         winDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         winDialog.show();
 
+        Database database = new Database(context);
+        database.DeleteMinScore();
+
         Button btnMenu = winDialog.findViewById(R.id.btnMenu);
         btnMenu.setOnClickListener(view -> {
             activity.startActivity(new Intent(context, MenuActivity.class));
@@ -110,5 +120,37 @@ public class GameTools {
 
         TextView textScore = winDialog.findViewById(R.id.textScore);
         textScore.setText(score);
+    }
+
+    public void OpenWinHighDialog(Context context, String score) {
+        Activity activity = ((Activity) context);
+        Dialog winDialog = new Dialog(context);
+
+        winDialog.setContentView(R.layout.win_high_dialog_layout);
+        winDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        winDialog.show();
+
+        Button btnSave = winDialog.findViewById(R.id.btnSave);
+        btnSave.setOnClickListener(view -> {
+            Database database = new Database(context);
+
+            EditText etName = winDialog.findViewById(R.id.etName);
+            database.AddScore(new Score(etName.getText().toString(), score));
+
+            activity.startActivity(new Intent(context, ScoreActivity.class));
+            activity.overridePendingTransition(0, 0);
+        });
+
+        TextView textScore = winDialog.findViewById(R.id.textScore);
+        textScore.setText(score);
+    }
+
+    public void CompareScore(int score) {
+        Database database = new Database(context);
+
+        if (score > database.GetHighScore() || database.GetHighScore() == 0)
+            OpenWinHighDialog(context, String.valueOf(score));
+        else
+            OpenWinDialog(context, String.valueOf(score));
     }
 }

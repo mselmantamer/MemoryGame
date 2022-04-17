@@ -20,10 +20,13 @@
         <entry key="..\:/Users/Selman/AndroidStudioProjects/GameApplication3/app/src/main/res/layout/activity_highscore.xml" value="0.2" />
         <entry key="..\:/Users/Selman/AndroidStudioProjects/GameApplication3/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/Selman/AndroidStudioProjects/GameApplication3/app/src/main/res/layout/activity_menu.xml" value="0.264" />
+        <entry key="..\:/Users/Selman/AndroidStudioProjects/GameApplication3/app/src/main/res/layout/activity_score.xml" value="0.21403508771929824" />
         <entry key="..\:/Users/Selman/AndroidStudioProjects/GameApplication3/app/src/main/res/layout/dialog_finish.xml" value="0.1" />
         <entry key="..\:/Users/Selman/AndroidStudioProjects/GameApplication3/app/src/main/res/layout/grid_item.xml" value="0.24592391304347827" />
         <entry key="..\:/Users/Selman/AndroidStudioProjects/GameApplication3/app/src/main/res/layout/row_score.xml" value="0.1" />
-        <entry key="..\:/Users/Selman/AndroidStudioProjects/GameApplication3/app/src/main/res/layout/win_dialog_layout.xml" value="0.1" />
+        <entry key="..\:/Users/Selman/AndroidStudioProjects/GameApplication3/app/src/main/res/layout/score_row_layout.xml" value="0.21403508771929824" />
+        <entry key="..\:/Users/Selman/AndroidStudioProjects/GameApplication3/app/src/main/res/layout/win_dialog_layout.xml" value="0.264" />
+        <entry key="..\:/Users/Selman/AndroidStudioProjects/GameApplication3/app/src/main/res/layout/win_high_dialog_layout.xml" value="0.264" />
         <entry key="..\:/Users/Selman/AndroidStudioProjects/GameApplication3/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.203" />
         <entry key="..\:/Users/Selman/AndroidStudioProjects/GameApplication3/app/src/main/res/mipmap-anydpi-v26/logo_game.xml" value="0.212" />
       </map>
